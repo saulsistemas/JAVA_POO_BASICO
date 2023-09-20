@@ -1,10 +1,6 @@
 
 package CLASE03;
 
-/**
- *
- * @author HELPNET
- */
 public class Pokemon {
     //variable de instancia o varible global
     int nivelAtaque1 = 5;

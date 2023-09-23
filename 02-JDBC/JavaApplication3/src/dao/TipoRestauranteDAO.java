@@ -21,7 +21,7 @@ public interface TipoRestauranteDAO {
     
     //metodo que permite eliminar registro de tipo restaurante
     //retorna 1 si esta todo ok y 0 si esta mal
-    int eliminar (int idTipoRestaurante);
+    int eliminar (int idTipoRestaurante)throws SQLException;;
     
     //metodo que permite consultar registro de tipo restaurante
     //retorna 1 lista de tipo restaurante o null

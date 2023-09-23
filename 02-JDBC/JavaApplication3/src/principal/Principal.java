@@ -36,17 +36,32 @@ public class Principal {
 
 
         //:::::::::::::::::: PRUEBA UPDATE :::::::::::::::::::::::
+//        TipoRestaurante tpresEntity = new TipoRestaurante();
+//        tpresEntity.setIdTipoRestaurante(18);
+//        tpresEntity.setDescripcion("Colombiano");
+//        tpresEntity.setFechaModificacion(LocalDateTime.now());
+//        tpresEntity.setEstatus(false);
+//        try {
+//            int guardado = tpresDAOImpl.actualizar(tpresEntity);
+//            if (guardado>0) {
+//                System.out.println("El tipo de restaurante "+ tpresEntity.getDescripcion());
+//            }else{
+//                System.err.println("Hubo un error al actualizar el tipo de restaurante");
+//            }
+//        } catch (SQLException ex) {
+//            System.err.println("Error "+ex.getMessage());
+//        }
+
+        //:::::::::::::::::: PRUEBA DELETE :::::::::::::::::::::::
         TipoRestaurante tpresEntity = new TipoRestaurante();
         tpresEntity.setIdTipoRestaurante(18);
-        tpresEntity.setDescripcion("Colombiano");
-        tpresEntity.setFechaModificacion(LocalDateTime.now());
-        tpresEntity.setEstatus(false);
+
         try {
-            int guardado = tpresDAOImpl.actualizar(tpresEntity);
-            if (guardado>0) {
+            int eliminado = tpresDAOImpl.eliminar(tpresEntity.getIdTipoRestaurante());
+            if (eliminado>0) {
                 System.out.println("El tipo de restaurante "+ tpresEntity.getDescripcion());
             }else{
-                System.err.println("Hubo un error al actualizar el tipo de restaurante");
+                System.err.println("Hubo un error al Elimnar el tipo de restaurante");
             }
         } catch (SQLException ex) {
             System.err.println("Error "+ex.getMessage());

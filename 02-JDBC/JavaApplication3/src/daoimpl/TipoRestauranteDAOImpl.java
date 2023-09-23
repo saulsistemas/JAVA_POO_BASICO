@@ -44,8 +44,13 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO{
     }
 
     @Override
-    public int eliminar(int idTipoRestaurante) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int eliminar(int idTipoRestaurante)throws SQLException {
+       
+        String sql = "DELETE FROM tipo_restaurante WHERE idTipoRestaurante='"+idTipoRestaurante+"';";
+      
+        int ejecutado = ConnectionFactory.ejecutarSQL(sql);
+
+        return ejecutado;
     }
 
     @Override

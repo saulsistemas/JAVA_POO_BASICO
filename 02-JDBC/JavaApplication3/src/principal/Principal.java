@@ -59,7 +59,7 @@ public class Principal {
         try {
             int eliminado = tpresDAOImpl.eliminar(tpresEntity.getIdTipoRestaurante());
             if (eliminado>0) {
-                System.out.println("El tipo de restaurante "+ tpresEntity.getDescripcion());
+                System.out.println("El tipo de restaurante fue eliminado" );
             }else{
                 System.err.println("Hubo un error al Elimnar el tipo de restaurante");
             }

@@ -7,6 +7,8 @@ import daoimpl.TipoRestauranteDAOImpl;
 import entity.TipoRestaurante;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
+
 
 
 
@@ -14,13 +16,14 @@ import java.time.LocalDateTime;
 public class Principal {
     
     public static void main(String[] args) {
-        TipoRestauranteDAOImpl tpresDAOImpl = new TipoRestauranteDAOImpl();
-        //:::::::::::::::::: PRUEBA INSERT :::::::::::::::::::::::
+        
+            TipoRestauranteDAOImpl tpresDAOImpl = new TipoRestauranteDAOImpl();
+            //:::::::::::::::::: PRUEBA INSERT :::::::::::::::::::::::
 //        TipoRestaurante tpresEntity = new TipoRestaurante();
 //        tpresEntity.setDescripcion("Argentino");
 //        tpresEntity.setFechaCreacion(LocalDateTime.now());
 //        tpresEntity.setEstatus(true);
-//        
+//
 //        
 //        try {
 //            int guardado = tpresDAOImpl.guardar(tpresEntity);
@@ -35,7 +38,7 @@ public class Principal {
 
 
 
-        //:::::::::::::::::: PRUEBA UPDATE :::::::::::::::::::::::
+//:::::::::::::::::: PRUEBA UPDATE :::::::::::::::::::::::
 //        TipoRestaurante tpresEntity = new TipoRestaurante();
 //        tpresEntity.setIdTipoRestaurante(18);
 //        tpresEntity.setDescripcion("Colombiano");
@@ -52,22 +55,35 @@ public class Principal {
 //            System.err.println("Error "+ex.getMessage());
 //        }
 
-        //:::::::::::::::::: PRUEBA DELETE :::::::::::::::::::::::
-        TipoRestaurante tpresEntity = new TipoRestaurante();
-        tpresEntity.setIdTipoRestaurante(18);
+//        //:::::::::::::::::: PRUEBA DELETE :::::::::::::::::::::::
+//        TipoRestaurante tpresEntity = new TipoRestaurante();
+//        tpresEntity.setIdTipoRestaurante(18);
+//
+//        try {
+//            int eliminado = tpresDAOImpl.eliminar(tpresEntity.getIdTipoRestaurante());
+//            if (eliminado>0) {
+//                System.out.println("El tipo de restaurante fue eliminado" );
+//            }else{
+//                System.err.println("Hubo un error al Elimnar el tipo de restaurante");
+//            }
+//        } catch (SQLException ex) {
+//            System.err.println("Error "+ex.getMessage());
+//        }
 
+//:::::::::::::::::: PRUEBA SELECT :::::::::::::::::::::::
         try {
-            int eliminado = tpresDAOImpl.eliminar(tpresEntity.getIdTipoRestaurante());
-            if (eliminado>0) {
-                System.out.println("El tipo de restaurante fue eliminado" );
-            }else{
-                System.err.println("Hubo un error al Elimnar el tipo de restaurante");
+            List<TipoRestaurante> tiposConsultados= tpresDAOImpl.consultar();
+            
+            for (TipoRestaurante tiposConsultado : tiposConsultados) {
+                System.out.println("ID: "+tiposConsultado.getIdTipoRestaurante());
+                System.out.println("DESCRIPCION: "+tiposConsultado.getDescripcion());
+                System.out.println("ESTADO: "+tiposConsultado.isEstatus()+"\n");
+                
             }
+            
         } catch (SQLException ex) {
             System.err.println("Error "+ex.getMessage());
         }
-         
-        
     }
     
     

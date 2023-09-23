@@ -6,7 +6,8 @@ import dao.TipoRestauranteDAO;
 import entity.TipoRestaurante;
 import java.sql.SQLException;
 import java.util.List;
-
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -54,8 +55,25 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO{
     }
 
     @Override
-    public List<TipoRestaurante> consultar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<TipoRestaurante> consultar()throws SQLException {
+        String sql = "SELECT * FROM restaurante.tipo_restaurante;";
+      
+        ResultSet rs = ConnectionFactory.ejecutarSQLSelect(sql);
+        List<TipoRestaurante> tiposRestaurantes = new ArrayList<>();
+        
+        if (rs!=null) {
+            //Miestras el rs tenga valor
+            while (rs.next()) {
+                TipoRestaurante tipoRestaurante = new TipoRestaurante();
+                tipoRestaurante.setIdTipoRestaurante(rs.getInt("idTipoRestaurante"));
+                tipoRestaurante.setDescripcion(rs.getString("descripcion"));
+                tipoRestaurante.setFechaCreacion(rs.getTimestamp("fechaCreacion").toLocalDateTime());
+                tipoRestaurante.setFechaModificacion(rs.getTimestamp("fechaModificacion") !=null ? rs.getTimestamp("fechaModificacion").toLocalDateTime():null);
+                tipoRestaurante.setEstatus(rs.getBoolean("estatus"));
+                tiposRestaurantes.add(tipoRestaurante);
+            }
+        }
+        return tiposRestaurantes;
     }
 
     @Override

@@ -8,6 +8,9 @@ import entity.TipoRestaurante;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import myexceptions.RestauranteException;
 
 
 
@@ -100,6 +103,9 @@ public class Principal {
             
         } catch (SQLException ex) {
             System.err.println("Error "+ex.getMessage());
+        } catch (RestauranteException ex) {
+            System.out.println(ex.getErrorCode());
+            
         }  
         
     }

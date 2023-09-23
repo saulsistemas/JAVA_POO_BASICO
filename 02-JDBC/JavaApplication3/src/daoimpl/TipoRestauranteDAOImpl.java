@@ -3,11 +3,13 @@ package daoimpl;
 
 import connection.ConnectionFactory;
 import dao.TipoRestauranteDAO;
+import emuns.CodigoEnum;
 import entity.TipoRestaurante;
 import java.sql.SQLException;
 import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import myexceptions.RestauranteException;
 
 /**
  *
@@ -77,10 +79,16 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO{
     }
 
     @Override
-    public TipoRestaurante consultarPorId(int idTipoRestaurante)throws SQLException {
-        String sql = "SELECT * FROM tipo_restaurante WHERE idTipoRestaurante ='"+idTipoRestaurante+"';";
-      
-        ResultSet rs = ConnectionFactory.ejecutarSQLSelect(sql);
+    public TipoRestaurante consultarPorId(int idTipoRestaurante)throws SQLException,RestauranteException {
+        String sql = "SELECT * ROM tipo_restaurante WHERE idTipoRestaurante ='"+idTipoRestaurante+"';";
+        ResultSet rs = null;
+        
+        try {
+           rs = ConnectionFactory.ejecutarSQLSelect(sql);
+        } catch (Exception e) {
+            throw new RestauranteException("Error de sintazis en la sentencia "+sql, CodigoEnum.SINTAXIS_SQL_ERROR_CODE);
+        }
+            
         TipoRestaurante tipoRestaurante = null;
         
         if (rs!=null) {

@@ -2,6 +2,7 @@
 package dao;
 
 import entity.TipoRestaurante;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public interface TipoRestauranteDAO {
     //metodo que permite guardar registro de tipo restaurante
     //retorna 1 si esta todo ok y 0 si esta mal
     //public abstract
-    int guardar (TipoRestaurante tipoRestaurante);
+    int guardar (TipoRestaurante tipoRestaurante)throws SQLException;
     
     //metodo que permite actualizar registro de tipo restaurante
     //retorna 1 si esta todo ok y 0 si esta mal

@@ -33,8 +33,14 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO{
     }
 
     @Override
-    public int actualizar(TipoRestaurante tipoRestaurante) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int actualizar(TipoRestaurante tipoRestaurante)throws SQLException {
+        int numero = tipoRestaurante.isEstatus()? 1 : 0;
+        String sql = "UPDATE tipo_restaurante SET descripcion='"+tipoRestaurante.getDescripcion()+"', fechaModificacion='"+tipoRestaurante.getFechaModificacion()+"', estatus='"+numero+"' "
+                + "WHERE idTipoRestaurante='"+tipoRestaurante.getIdTipoRestaurante()+"';";
+      
+        int ejecutado = ConnectionFactory.ejecutarSQL(sql);
+
+        return ejecutado;
     }
 
     @Override

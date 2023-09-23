@@ -17,7 +17,7 @@ public interface TipoRestauranteDAO {
     
     //metodo que permite actualizar registro de tipo restaurante
     //retorna 1 si esta todo ok y 0 si esta mal
-    int actualizar (TipoRestaurante tipoRestaurante);
+    int actualizar (TipoRestaurante tipoRestaurante)throws SQLException;
     
     //metodo que permite eliminar registro de tipo restaurante
     //retorna 1 si esta todo ok y 0 si esta mal

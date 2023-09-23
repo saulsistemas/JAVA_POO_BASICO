@@ -1,8 +1,10 @@
 
 package principal;
 
+import entidad.Ataque;
 import entidad.Evolucion;
 import entidad.Pokemon;
+import servicioImplementacion.PokemonServicioImple;
 
 /**
  *
@@ -71,5 +73,17 @@ public class Principal {
         System.out.println("Estado: "+ estado2);
         //System.out.println(pokemon1.toString());
         
+        
+        System.out.println("::::::::::::: Funcionalidad de Ataque :::::::::::::::::::");
+        Ataque ataque1 = new Ataque();
+        ataque1.setId(1);
+        ataque1.setNombre("Chorro de Agua");
+        ataque1.setValor(6);
+        pokemon2.setAtaques(ataque1);
+        System.out.println("Los ataques del poquemon son : "+ pokemon2.getAtaques().getNombre() + " y el nivel es : "+pokemon2.getAtaques().getValor());
+        
+        System.out.println("::::::::::::: Añadiendo invocacion Ataques Implementacion: ::::::::::::::::::");
+        PokemonServicioImple pokemonServicioImpl = new PokemonServicioImple();
+        pokemonServicioImpl.ataque(pokemon2.getAtaques(), pokemon2);
     }
 }

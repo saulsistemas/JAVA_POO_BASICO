@@ -9,13 +9,25 @@ package entidad;
 
 //Herencia -permite que se puedan definir nuevas clases basadas de unas ya existentes
 //a fin de reutilizar el código
+
+//IS-A hace referencia a la herencia
 public class Pokemon extends Pokebola{
    
     private String tipo;
     // HAS -A - Tiene un, tiene muchos, una clase java puede tener ciertos elementos de un objeto
     // un pokemon puede tener varias evoluciones
+    //Hace referencia a las propiedades de la clase
     private Evolucion evoluciones;
     private boolean estado;
+    private Ataque ataques;
+
+    public Ataque getAtaques() {
+        return ataques;
+    }
+
+    public void setAtaques(Ataque ataques) {
+        this.ataques = ataques;
+    }
 
     //Constructor -método especial que se utiliza para inicializar un objeto
     //recién creado y asignarle valores iniciales a sus variables de instancia

@@ -11,7 +11,9 @@ public class Pokemon {
     private String nombre;
     private String tipo;
     private String imagen;
-    private String evoluciones;
+    // HAS -A - Tiene un, tiene muchos, una clase java puede tener ciertos elementos de un objeto
+    // un pokemon puede tener varias evoluciones
+    private Evolucion evoluciones;
     private boolean estado;
 
     //Constructor -método especial que se utiliza para inicializar un objeto
@@ -22,7 +24,7 @@ public class Pokemon {
 
 
 
-    public Pokemon(int id, String nombre, String tipo, String imagen, String evoluciones, boolean estado) {
+    public Pokemon(int id, String nombre, String tipo, String imagen, Evolucion evoluciones, boolean estado) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -71,11 +73,11 @@ public class Pokemon {
         this.imagen = imagen;
     }
 
-    public String getEvoluciones() {
+    public Evolucion getEvoluciones() {
         return evoluciones;
     }
 
-    public void setEvoluciones(String evoluciones) {
+    public void setEvoluciones(Evolucion evoluciones) {
         this.evoluciones = evoluciones;
     }
 

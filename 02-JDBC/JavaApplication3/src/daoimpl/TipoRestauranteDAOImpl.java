@@ -80,7 +80,7 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO{
 
     @Override
     public TipoRestaurante consultarPorId(int idTipoRestaurante)throws SQLException,RestauranteException {
-        String sql = "SELECT * ROM tipo_restaurante WHERE idTipoRestaurante ='"+idTipoRestaurante+"';";
+        String sql = "SELECT * FROM tipo_restaurante WHERE idTipoRestaurante ='"+idTipoRestaurante+"';";
         ResultSet rs = null;
         
         try {

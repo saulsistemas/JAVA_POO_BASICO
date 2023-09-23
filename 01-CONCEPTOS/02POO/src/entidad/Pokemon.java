@@ -1,6 +1,8 @@
 
 package entidad;
 
+import java.util.List;
+
 /**
  * Clase - Es una plantilla que contienen la estructura básica de un objeto (Atributos y Métodos).
  * Atributos - característica o propiedad determinada de un objeto.
@@ -17,7 +19,7 @@ public class Pokemon extends Pokebola{
     // HAS -A - Tiene un, tiene muchos, una clase java puede tener ciertos elementos de un objeto
     // un pokemon puede tener varias evoluciones
     //Hace referencia a las propiedades de la clase
-    private Evolucion evoluciones;
+    private List<Evolucion> evoluciones;
     private boolean estado;
     private Ataque ataques;
 
@@ -39,7 +41,7 @@ public class Pokemon extends Pokebola{
 
     public Pokemon(int id, String nombre, String imagen,  String tipo,Evolucion evoluciones, boolean estado) {
         super(id,nombre,imagen);
-        this.evoluciones = evoluciones;
+        this.evoluciones = (List<Evolucion>) evoluciones;
         this.estado = estado;
     }
     
@@ -59,13 +61,15 @@ public class Pokemon extends Pokebola{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public Evolucion getEvoluciones() {
+
+    public List<Evolucion> getEvoluciones() {
         return evoluciones;
     }
 
-    public void setEvoluciones(Evolucion evoluciones) {
+    public void setEvoluciones(List<Evolucion> evoluciones) {
         this.evoluciones = evoluciones;
     }
+
 
     public boolean isEstado() {
         return estado;

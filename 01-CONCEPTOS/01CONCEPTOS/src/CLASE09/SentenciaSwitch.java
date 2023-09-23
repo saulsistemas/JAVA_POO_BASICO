@@ -3,7 +3,8 @@ package CLASE09;
 
 /**
  *
- * @author HELPNET
+ * Swhitch -estructura que evalúa más de un caso y se caracteriza por:
+ * Selección de una opción entre varias.
  */
 public class SentenciaSwitch {
     public static void main(String[] args) {

@@ -6,11 +6,12 @@ package entidad;
  * Atributos - característica o propiedad determinada de un objeto.
  * Atributos de una clase, siempre se definen al inicio, fuera de cualquier metodo.
  */
-public class Pokemon {
-    private int id;
-    private String nombre;
+
+//Herencia -permite que se puedan definir nuevas clases basadas de unas ya existentes
+//a fin de reutilizar el código
+public class Pokemon extends Pokebola{
+   
     private String tipo;
-    private String imagen;
     // HAS -A - Tiene un, tiene muchos, una clase java puede tener ciertos elementos de un objeto
     // un pokemon puede tener varias evoluciones
     private Evolucion evoluciones;
@@ -19,16 +20,13 @@ public class Pokemon {
     //Constructor -método especial que se utiliza para inicializar un objeto
     //recién creado y asignarle valores iniciales a sus variables de instancia
     public Pokemon() {
-        
+       
     }
 
 
 
-    public Pokemon(int id, String nombre, String tipo, String imagen, Evolucion evoluciones, boolean estado) {
-        this.id = id;
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.imagen = imagen;
+    public Pokemon(int id, String nombre, String imagen,  String tipo,Evolucion evoluciones, boolean estado) {
+        super(id,nombre,imagen);
         this.evoluciones = evoluciones;
         this.estado = estado;
     }
@@ -40,22 +38,7 @@ public class Pokemon {
  * 
      * @return 
  */  
-    public int getId() {
-        return id;
-    }
-    //vas darle valor a una propiedad de la clase.
-    //el id que esta entre parentecis lo vas asignar a la propiedad de tu clase
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+   
 
     public String getTipo() {
         return tipo;
@@ -64,15 +47,6 @@ public class Pokemon {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
     public Evolucion getEvoluciones() {
         return evoluciones;
     }
@@ -90,9 +64,6 @@ public class Pokemon {
     }
     
  
-        @Override
-    public String toString() {
-        return "Pokemon{" + "id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + ", imagen=" + imagen + ", evoluciones=" + evoluciones + ", estado=" + estado + '}';
-    }
+    
     
 }

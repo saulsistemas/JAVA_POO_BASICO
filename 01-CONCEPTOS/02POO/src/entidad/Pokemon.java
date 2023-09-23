@@ -13,6 +13,25 @@ public class Pokemon {
     private String imagen;
     private String evoluciones;
     private boolean estado;
+
+    //Constructor -método especial que se utiliza para inicializar un objeto
+    //recién creado y asignarle valores iniciales a sus variables de instancia
+    public Pokemon() {
+        
+    }
+
+
+
+    public Pokemon(int id, String nombre, String tipo, String imagen, String evoluciones, boolean estado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.imagen = imagen;
+        this.evoluciones = evoluciones;
+        this.estado = estado;
+    }
+    
+    
 /**
  * 
  * Encapsulamiento - Las clases Java no accedan directeamente a los atributos de una clase
@@ -69,6 +88,9 @@ public class Pokemon {
     }
     
  
-    
+        @Override
+    public String toString() {
+        return "Pokemon{" + "id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + ", imagen=" + imagen + ", evoluciones=" + evoluciones + ", estado=" + estado + '}';
+    }
     
 }

@@ -31,6 +31,7 @@ public class Principal {
         System.out.println("Evoluciones: "+ pokemon1.getEvoluciones());
         String estado = pokemon1.isEstado()?"Habilitado":"Deshabilitado";
         System.out.println("Estado: "+ estado);
+        System.out.println(pokemon1.toString());
         
                 System.out.println("::::::::::::: POKEMON2 :::::::::::::::::::");
         
@@ -52,5 +53,7 @@ public class Principal {
         System.out.println("Evoluciones: "+ pokemon2.getEvoluciones());
         String estado2 = pokemon2.isEstado()?"Habilitado":"Deshabilitado";
         System.out.println("Estado: "+ estado2);
+        System.out.println(pokemon1.toString());
+        
     }
 }

@@ -29,5 +29,5 @@ public interface TipoRestauranteDAO {
     
     //metodo que permite consultar registro de tipo id de tipo restaurante
     //retorna 1 lista de tipo restaurante o null
-    TipoRestaurante consultarPorId(int idTipoRestaurante);
+    TipoRestaurante consultarPorId(int idTipoRestaurante)throws SQLException;
 }

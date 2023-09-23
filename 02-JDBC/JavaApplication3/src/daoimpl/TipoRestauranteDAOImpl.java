@@ -77,8 +77,26 @@ public class TipoRestauranteDAOImpl implements TipoRestauranteDAO{
     }
 
     @Override
-    public TipoRestaurante consultarPorId(int idTipoRestaurante) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public TipoRestaurante consultarPorId(int idTipoRestaurante)throws SQLException {
+        String sql = "SELECT * FROM tipo_restaurante WHERE idTipoRestaurante ='"+idTipoRestaurante+"';";
+      
+        ResultSet rs = ConnectionFactory.ejecutarSQLSelect(sql);
+        TipoRestaurante tipoRestaurante = null;
+        
+        if (rs!=null) {
+            //Miestras el rs tenga valor
+            if (rs.next()) {
+                tipoRestaurante = new TipoRestaurante();
+                tipoRestaurante.setIdTipoRestaurante(rs.getInt("idTipoRestaurante"));
+                tipoRestaurante.setDescripcion(rs.getString("descripcion"));
+                tipoRestaurante.setFechaCreacion(rs.getTimestamp("fechaCreacion").toLocalDateTime());
+                tipoRestaurante.setFechaModificacion(rs.getTimestamp("fechaModificacion") !=null ? rs.getTimestamp("fechaModificacion").toLocalDateTime():null);
+                tipoRestaurante.setEstatus(rs.getBoolean("estatus"));
+            }
+                
+            
+        }
+        return tipoRestaurante;
     }
     
 }

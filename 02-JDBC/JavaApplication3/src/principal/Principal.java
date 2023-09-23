@@ -70,20 +70,38 @@ public class Principal {
 //            System.err.println("Error "+ex.getMessage());
 //        }
 
-//:::::::::::::::::: PRUEBA SELECT :::::::::::::::::::::::
+////:::::::::::::::::: PRUEBA SELECT :::::::::::::::::::::::
+//        try {
+//            List<TipoRestaurante> tiposConsultados= tpresDAOImpl.consultar();
+//            
+//            for (TipoRestaurante tiposConsultado : tiposConsultados) {
+//                System.out.println("ID: "+tiposConsultado.getIdTipoRestaurante());
+//                System.out.println("DESCRIPCION: "+tiposConsultado.getDescripcion());
+//                System.out.println("ESTADO: "+tiposConsultado.isEstatus()+"\n");
+//                
+//            }
+//            
+//        } catch (SQLException ex) {
+//            System.err.println("Error "+ex.getMessage());
+//        }
+        
+      //:::::::::::::::::: PRUEBA SELECT :::::::::::::::::::::::
         try {
-            List<TipoRestaurante> tiposConsultados= tpresDAOImpl.consultar();
+           TipoRestaurante tiposConsultado = tpresDAOImpl.consultarPorId(15);
             
-            for (TipoRestaurante tiposConsultado : tiposConsultados) {
-                System.out.println("ID: "+tiposConsultado.getIdTipoRestaurante());
+            if (tiposConsultado!=null) {
+                 System.out.println("ID: "+tiposConsultado.getIdTipoRestaurante());
                 System.out.println("DESCRIPCION: "+tiposConsultado.getDescripcion());
                 System.out.println("ESTADO: "+tiposConsultado.isEstatus()+"\n");
-                
             }
+               
+                
+            
             
         } catch (SQLException ex) {
             System.err.println("Error "+ex.getMessage());
-        }
+        }  
+        
     }
     
     

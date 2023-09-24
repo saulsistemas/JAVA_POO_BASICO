@@ -8,6 +8,7 @@ import entity.Menu;
 import entity.Restaurante;
 import entity.TipoRestaurante;
 import java.time.LocalDateTime;
+import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -102,6 +103,19 @@ public class RestauranteDAOImplTest {
 
     @Test
     public void testConsultar() throws Exception {
+         RestauranteDAOImpl rtDAOImpl = new RestauranteDAOImpl();
+         
+         try {
+             List<Restaurante> tiposConsultados= rtDAOImpl.consultar();
+             
+            for (Restaurante tiposConsultado : tiposConsultados) {
+                System.out.println("ID: "+tiposConsultado.getIdRestaurante());
+                System.out.println("NOMBRE: "+tiposConsultado.getNombre());
+                System.out.println("ESTADO: "+tiposConsultado.isEstatus()+"\n");
+            }
+        } catch (Exception e) {
+            System.err.println("Error "+e.getMessage());
+        }
     }
 
     @Test

@@ -3,8 +3,12 @@ package daoimpl;
 
 import connection.ConnectionFactory;
 import dao.RestauranteDAO;
+import entity.Menu;
 import entity.Restaurante;
+import entity.TipoRestaurante;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import myexceptions.RestauranteException;
 
@@ -56,7 +60,37 @@ public class RestauranteDAOImpl implements RestauranteDAO{
 
     @Override
     public List<Restaurante> consultar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT * FROM restaurante;";
+      
+        ResultSet rs = ConnectionFactory.ejecutarSQLSelect(sql);
+        List<Restaurante> restaurantes = new ArrayList<>();
+        
+        if (rs!=null) {
+            //Miestras el rs tenga valor
+            while (rs.next()) {
+                Restaurante restaurante = new Restaurante();
+                restaurante.setIdRestaurante(rs.getInt("idRestaurante"));
+                restaurante.setNombre(rs.getString("nombre"));
+                restaurante.setImagen(rs.getString("imagen"));
+                restaurante.setSlogan(rs.getString("slogan"));
+                restaurante.setFechaCreacion(rs.getTimestamp("fechaCreacion").toLocalDateTime());
+                restaurante.setFechaModificacion(rs.getTimestamp("fechaModificacion") !=null ? rs.getTimestamp("fechaModificacion").toLocalDateTime():null);
+                restaurante.setEstatus(rs.getBoolean("estatus"));
+                
+                TipoRestaurante tipoRestaurante = new TipoRestaurante();
+                tipoRestaurante.setIdTipoRestaurante(rs.getInt("idTipoRestaurante"));
+                restaurante.setTipoRestaurante(tipoRestaurante);
+        
+                Menu menu = new Menu();
+                menu.setIdMenu(rs.getInt("idMenu"));
+                restaurante.setMenu(menu);
+        
+                
+                
+                restaurantes.add(restaurante);
+            }
+        }
+        return restaurantes;
     }
 
     @Override

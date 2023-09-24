@@ -26,15 +26,17 @@ public class TestMysqlJDBC {
             //2 - Cargar Driver
             Connection conexion = DriverManager.getConnection(url,user,password);
             
-            Statement statement = conexion.createStatement();//Habilitando proceso para ejecutar sentencia SQL
+            Statement instruccion = conexion.createStatement();//Habilitando proceso para ejecutar sentencia SQL
             String sql = "SELECT * FROM restaurante.tipo_restaurante;";
-          
-            if (conexion!=null) {
-                System.out.println("La conexion fue exitosa");
-            }else{
-                System.out.println("La conexio no fue exitosa"+conexion);
-            }
+            ResultSet resultado = instruccion.executeQuery(sql);
             
+            while (resultado.next()) {
+                System.out.println("Id - " + resultado.getInt("idTipoRestaurante")+" ---- Descripcion - " + resultado.getString("descripcion"));    
+                System.out.println();  
+            }
+            resultado.close();
+            instruccion.close();
+            conexion.close();
         } catch (SQLException ex) {
             System.out.println("Error "+ex);
         }

@@ -54,10 +54,50 @@ public class RestauranteDAOImplTest {
 
     @Test
     public void testActualizar() throws Exception {
+        RestauranteDAOImpl rtDAOImpl = new RestauranteDAOImpl();
+        
+        Restaurante restaurante = new Restaurante();
+        restaurante.setIdRestaurante(21);
+        restaurante.setNombre("Restaurante Emily+5");
+        restaurante.setImagen("Emily.jpg");
+        restaurante.setSlogan("El mejor restauran");
+        restaurante.setEstatus(false);
+        restaurante.setFechaModificacion(LocalDateTime.now());
+        
+        TipoRestaurante tipoRestaurante = new TipoRestaurante();
+        tipoRestaurante.setIdTipoRestaurante(15);
+        restaurante.setTipoRestaurante(tipoRestaurante);
+        
+        Menu menu = new Menu();
+        menu.setIdMenu(3);
+        restaurante.setMenu(menu);
+        int guardado =0;
+        try {
+            guardado = rtDAOImpl.actualizar(restaurante);
+        
+            assertTrue(guardado > 0); 
+            System.out.println("Se guardo Exitosamente");
+        } catch (Exception e) {
+            assertTrue(guardado == 0); 
+            System.err.println("No se guardo "+e.getMessage());
+        }
     }
 
     @Test
     public void testEliminar() throws Exception {
+        RestauranteDAOImpl rtDAOImpl = new RestauranteDAOImpl();
+        Restaurante restaurante = new Restaurante();
+        restaurante.setIdRestaurante(21);
+        try {
+            int eliminado = rtDAOImpl.eliminar(restaurante.getIdRestaurante());
+        
+            assertTrue(eliminado > 0); 
+            System.out.println("Se elimino Exitosamente");
+        } catch (Exception e) {
+             
+            System.err.println("No se guardo "+e.getMessage());
+        }
+        
     }
 
     @Test

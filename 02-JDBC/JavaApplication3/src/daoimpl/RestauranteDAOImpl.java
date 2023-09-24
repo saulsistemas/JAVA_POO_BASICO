@@ -33,13 +33,25 @@ public class RestauranteDAOImpl implements RestauranteDAO{
     }
 
     @Override
-    public int actualizar(Restaurante Restaurante) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int actualizar(Restaurante restaurante) throws SQLException {
+       int numero = restaurante.isEstatus()? 1 : 0;
+        String sql = "UPDATE restaurante SET nombre='"+restaurante.getNombre()+"', imagen='"+restaurante.getImagen()+"',slogan='"+restaurante.getSlogan()
+                +"',fechaModificacion='"+restaurante.getFechaModificacion()+"', estatus='"+numero+"', idTipoRestaurante='"+restaurante.getTipoRestaurante().getIdTipoRestaurante()+"', idMenu='"+restaurante.getMenu().getIdMenu()+"' "
+                + "WHERE idRestaurante='"+restaurante.getIdRestaurante()+"';";
+      
+        int ejecutado = ConnectionFactory.ejecutarSQL(sql);
+
+        return ejecutado;
+       
     }
 
     @Override
     public int eliminar(int idRestaurante) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE FROM restaurante WHERE idRestaurante='"+idRestaurante+"';";
+      
+        int ejecutado = ConnectionFactory.ejecutarSQL(sql);
+
+        return ejecutado;
     }
 
     @Override

@@ -74,4 +74,9 @@ public class TipoRestaurante {
         this.estatus = estatus;
     }
 
+    @Override
+    public String toString() {
+        return "TipoRestaurante{" + "idTipoRestaurante=" + idTipoRestaurante + ", descripcion=" + descripcion + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", estatus=" + estatus + '}';
+    }
+
 }
